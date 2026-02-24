@@ -58,6 +58,19 @@ window.addEventListener("mousemove", (e) => {
   portrait.style.transform = `translate3d(${mx * 10}px, ${my * 10}px, 0)`;
 }, { passive: true });
 
+// ===== Gallery filter tabs =====
+document.querySelectorAll(".gtab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".gtab").forEach(t => t.classList.remove("active"));
+    tab.classList.add("active");
+    const filter = tab.dataset.filter;
+    document.querySelectorAll(".gallery-item").forEach(item => {
+      const cat = item.dataset.cat || "all";
+      item.classList.toggle("hidden", filter !== "all" && cat !== filter);
+    });
+  });
+});
+
 // ===== Neon Particle Canvas =====
 const canvas = document.getElementById("particles");
 const ctx    = canvas.getContext("2d");
