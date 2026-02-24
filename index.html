@@ -2,23 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tanvir Anjum Neon — FiveM Developer</title>
-  <meta name="description" content="Senior FiveM Server Developer | QBCore & QBOX Expert | Lua, MySQL | Custom RP Server Specialist" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Tanvir Anjum Neon — Senior FiveM Developer (QBCore/QBOX/ESX). Lua, MySQL, UI systems, performance optimization." />
+  <title>Tanvir Anjum Neon — Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Optional: system fonts are already great; if you want Google Fonts, add it. -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <header class="nav">
-    <div class="container nav-wrap">
-      <a class="logo" href="#top">Neon<span>.</span></a>
-      <nav class="menu">
+  <!-- Subtle particles -->
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <!-- Ambient gradient blobs -->
+  <div class="bg-blobs" aria-hidden="true">
+    <span class="blob b1"></span>
+    <span class="blob b2"></span>
+    <span class="blob b3"></span>
+  </div>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <span class="brand__dot"></span> Neon<span class="brand__light">.dev</span>
+      </a>
+
+      <button class="navbtn" id="navBtn" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="nav">
         <a href="#about">About</a>
-        <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
-        <a href="#services">Services</a>
-        <a href="#work">Work</a>
-        <a class="btn small" href="#contact">Contact</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact" class="pill">Contact</a>
       </nav>
     </div>
   </header>
@@ -26,254 +45,326 @@
   <main id="top">
     <!-- HERO -->
     <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-text">
-          <p class="badge">Dhaka, Bangladesh • Available for freelance</p>
-          <h1>Tanvir Anjum Neon</h1>
-          <h2>Senior FiveM Server Developer • QBCore / QBOX / ESX</h2>
-          <p class="lead">
-            I build high-performance GTA V RP servers, custom scripts, UI systems, and optimized frameworks.
-            6+ years experience with Lua, SQL/MySQL, HTML/CSS, and ox_inventory integrations. 
-          </p>
+      <div class="hero__bg">
+        <!-- Optional hero image overlay (rename neon_hero_1920x1080.jpg → hero.jpg) -->
+        <img class="hero__img" src="hero.jpg" alt="" loading="eager" onerror="this.style.display='none'">
+        <div class="hero__shade"></div>
+      </div>
 
-          <div class="cta">
-            <a class="btn" href="#contact">Hire Me</a>
-            <a class="btn ghost" href="#work">See My Work</a>
+      <div class="container hero__grid">
+        <div class="hero__left">
+          <div class="chip reveal">
+            🚀 Available for Freelance • Dhaka, Bangladesh
           </div>
 
-          <div class="links">
-            <a href="https://www.linkedin.com/in/ta-neon" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="https://dxfivem.com" target="_blank" rel="noreferrer">Website</a>
-            <a href="mailto:taneon98@hotmail.com">taneon98@hotmail.com</a>
+          <h1 class="reveal">
+            Tanvir Anjum <span class="grad">Neon</span>
+          </h1>
+
+          <p class="subtitle reveal">
+            Senior FiveM Server Developer • QBCore / QBOX / ESX • Lua + MySQL + UI Systems
+          </p>
+
+          <p class="lead reveal">
+            I build high-performance GTA V RP servers, custom scripts, and clean UI systems —
+            optimized for stability, scalability, and a premium player experience.
+          </p>
+
+          <div class="hero__cta reveal">
+            <a class="btn primary" href="#contact">Hire Me</a>
+            <a class="btn ghost" href="#experience">View Experience</a>
+            <a class="btn soft" href="#skills">Skills</a>
+          </div>
+
+          <div class="hero__links reveal">
+            <a href="mailto:taneon98@hotmail.com">📩 Email</a>
+            <a href="https://www.linkedin.com/in/ta-neon" target="_blank" rel="noreferrer">💼 LinkedIn</a>
+            <a href="https://dxfivem.com" target="_blank" rel="noreferrer">🌐 Website</a>
+          </div>
+
+          <div class="stats reveal">
+            <div class="stat glass">
+              <div class="stat__num">6+ yrs</div>
+              <div class="stat__label">FiveM Development</div>
+            </div>
+            <div class="stat glass">
+              <div class="stat__num">Lua / SQL</div>
+              <div class="stat__label">Systems + DB</div>
+            </div>
+            <div class="stat glass">
+              <div class="stat__num">QBCore</div>
+              <div class="stat__label">QBOX • ESX</div>
+            </div>
           </div>
         </div>
 
-        <div class="hero-card">
-          <!-- Put your headshot image in same folder and rename it to headshot.jpg -->
-          <img class="headshot" src="headshot.jpg" alt="Tanvir Anjum Neon headshot" />
-          <div class="mini">
-            <div>
-              <div class="kpi">6+ yrs</div>
-              <div class="kpi-label">FiveM Dev</div>
+        <div class="hero__right">
+          <div class="portrait glass reveal" id="portrait">
+            <img src="headshot.jpg" alt="Tanvir Anjum Neon portrait" loading="eager" />
+            <div class="portrait__glow" aria-hidden="true"></div>
+
+            <div class="portrait__badge">
+              ✨ Premium RP Systems <span>•</span> Performance Tuning
             </div>
-            <div>
-              <div class="kpi">QBCore</div>
-              <div class="kpi-label">QBOX • ESX</div>
+          </div>
+
+          <div class="mini-cards">
+            <div class="mini glass reveal">
+              🧠 <strong>Specialty</strong>
+              <span>Full server builds, jobs, heists, economy, UI</span>
             </div>
-            <div>
-              <div class="kpi">Lua/SQL</div>
-              <div class="kpi-label">UI + Systems</div>
+            <div class="mini glass reveal">
+              ⚡ <strong>Focus</strong>
+              <span>Optimization, stability, clean code</span>
             </div>
           </div>
         </div>
       </div>
-      <div class="hero-bg"></div>
+
+      <div class="scrollhint">
+        <span class="mouse"></span>
+        <span>Scroll</span>
+      </div>
     </section>
 
     <!-- ABOUT -->
     <section id="about" class="section">
       <div class="container">
-        <h3>About</h3>
-        <div class="card">
-          <p>
-            I’m a FiveM developer focused on building custom RP servers and scripts (QBCore, QBOX, ESX),
-            integrating ox_inventory, custom jobs, heists, economy systems, and improving server stability/performance.
-          </p>
-          <div class="about-grid">
-            <div class="about-item">
-              <span>Location</span>
-              <strong>Dhaka, Bangladesh</strong>
-            </div>
-            <div class="about-item">
-              <span>Phone</span>
-              <strong>+880 1831-957854</strong>
-            </div>
-            <div class="about-item">
-              <span>Email</span>
-              <strong><a href="mailto:taneon98@hotmail.com">taneon98@hotmail.com</a></strong>
-            </div>
-            <div class="about-item">
-              <span>Education</span>
-              <strong>BS in CSE (NSU)</strong>
-            </div>
-          </div>
+        <div class="section__head reveal">
+          <h2>👋 About</h2>
+          <p>Short intro + what you’re known for.</p>
         </div>
-      </div>
-    </section>
 
-    <!-- SKILLS -->
-    <section id="skills" class="section alt">
-      <div class="container">
-        <h3>Skills</h3>
-        <div class="grid3">
-          <div class="card">
-            <h4>Frameworks</h4>
-            <ul>
-              <li>QBCore</li>
-              <li>QBOX</li>
-              <li>ESX</li>
-              <li>ox_inventory</li>
-            </ul>
+        <div class="about grid">
+          <div class="card glass reveal">
+            <h3>Who I am</h3>
+            <p>
+              I’m a FiveM developer focused on building advanced RP servers and custom systems for QBCore/QBOX/ESX.
+              I prioritize performance, maintainability, and player experience — delivering clean, production-ready builds.
+            </p>
+
+            <div class="facts">
+              <div class="fact"><span>📍</span> Dhaka, Bangladesh</div>
+              <div class="fact"><span>📞</span> +880 1831-957854</div>
+              <div class="fact"><span>📩</span> taneon98@hotmail.com</div>
+              <div class="fact"><span>🧩</span> Lua • MySQL • HTML/CSS</div>
+            </div>
           </div>
-          <div class="card">
-            <h4>Tech</h4>
-            <ul>
-              <li>Lua</li>
-              <li>SQL / MySQL</li>
-              <li>HTML / CSS</li>
-              <li>Server optimization</li>
+
+          <div class="card glass reveal">
+            <h3>What I do best</h3>
+            <ul class="list">
+              <li>✅ Full RP server builds (economy, jobs, UI, balancing)</li>
+              <li>✅ Script customization, bug fixing, compatibility updates</li>
+              <li>✅ Database tuning + performance optimization</li>
+              <li>✅ Long-term maintenance & support for clients</li>
             </ul>
-          </div>
-          <div class="card">
-            <h4>Extras</h4>
-            <ul>
-              <li>UI systems & gameplay mechanics</li>
-              <li>Performance tuning</li>
-              <li>Maintenance & support</li>
-              <li>International client delivery</li>
-            </ul>
+
+            <div class="pills">
+              <span class="pilltag">QBCore</span>
+              <span class="pilltag">QBOX</span>
+              <span class="pilltag">ESX</span>
+              <span class="pilltag">ox_inventory</span>
+              <span class="pilltag">Optimization</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- EXPERIENCE -->
-    <section id="experience" class="section">
+    <section id="experience" class="section section--alt">
       <div class="container">
-        <h3>Experience</h3>
+        <div class="section__head reveal">
+          <h2>🧰 Experience</h2>
+          <p>Timeline that reads clean and looks premium.</p>
+        </div>
 
         <div class="timeline">
-          <div class="t-item card">
-            <div class="t-top">
-              <strong>FiveM Developer Freelancer</strong>
-              <span>Fiverr • Jan 2022 — Present</span>
+          <article class="t-item glass reveal">
+            <div class="t-dot"></div>
+            <div class="t-content">
+              <div class="t-top">
+                <h3>FiveM Developer — Freelancer</h3>
+                <span class="t-meta">Fiverr • Jan 2022 — Present</span>
+              </div>
+              <ul>
+                <li>Built custom QBCore/QBOX/ESX servers for international clients</li>
+                <li>Integrated jobs, heists, crafting, blackmarket, and UI systems</li>
+                <li>Improved stability and reduced server load through optimization</li>
+              </ul>
             </div>
-            <ul>
-              <li>Developed full custom QBCore, QBOX, and ESX servers</li>
-              <li>Integrated ox_inventory, custom jobs, heists, drugs, and legal systems</li>
-              <li>Optimized server performance for better stability</li>
-              <li>Provided ongoing maintenance & support for international clients</li>
-            </ul>
-          </div>
+          </article>
 
-          <div class="t-item card">
-            <div class="t-top">
-              <strong>Game Developer (Freelance)</strong>
-              <span>Upwork • Sep 2022 — Present</span>
+          <article class="t-item glass reveal">
+            <div class="t-dot"></div>
+            <div class="t-content">
+              <div class="t-top">
+                <h3>Game Developer — Freelance</h3>
+                <span class="t-meta">Upwork • Sep 2022 — Present</span>
+              </div>
+              <ul>
+                <li>Custom scripts, UI improvements, server tuning & fixes</li>
+                <li>Delivered full builds and ongoing support</li>
+              </ul>
             </div>
-            <ul>
-              <li>Customized FiveM systems, scripts, UI, and optimization solutions</li>
-              <li>Delivered complete server builds to clients</li>
-            </ul>
-          </div>
+          </article>
 
-          <div class="t-item card">
-            <div class="t-top">
-              <strong>Google Apps Developer</strong>
-              <span>Google • Jul 2021 — Oct 2022</span>
+          <article class="t-item glass reveal">
+            <div class="t-dot"></div>
+            <div class="t-content">
+              <div class="t-top">
+                <h3>Google Apps Developer</h3>
+                <span class="t-meta">Google • Jul 2021 — Oct 2022</span>
+              </div>
+              <ul>
+                <li>Worked on app development and automation-oriented tasks</li>
+              </ul>
             </div>
-            <ul>
-              <li>Worked on app development tasks and automation-related projects</li>
-            </ul>
-          </div>
-        </div>
-
-        <p class="note">Source: CV details. :contentReference[oaicite:1]{index=1}</p>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services" class="section alt">
-      <div class="container">
-        <h3>Services</h3>
-        <div class="grid3">
-          <div class="card">
-            <h4>Full FiveM Server Build</h4>
-            <p>Custom QBCore/QBOX/ESX server, economy setup, jobs, UI, balancing, ready-to-play.</p>
-          </div>
-          <div class="card">
-            <h4>Script Customization & Fix</h4>
-            <p>Bug fixing, feature add, optimization, database fixes, compatibility updates.</p>
-          </div>
-          <div class="card">
-            <h4>Performance & Security</h4>
-            <p>Resource optimization, server stability tuning, database tuning, best practices.</p>
-          </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- WORK / PROJECTS -->
-    <section id="work" class="section">
+    <!-- SKILLS -->
+    <section id="skills" class="section">
       <div class="container">
-        <h3>Work</h3>
-        <div class="card">
-          <p>
-            Add your products/projects here (Tebex packs, GitHub links, YouTube demos, Discord server, etc).
-            If you give me your project list + links, I’ll format this section perfectly.
-          </p>
+        <div class="section__head reveal">
+          <h2>🧠 Skills</h2>
+          <p>Recruiter-friendly visual layout + progress bars.</p>
+        </div>
 
-          <div class="work-grid">
-            <a class="work-item" href="#" onclick="return false;">
-              <strong>Ultimate Advanced FiveM Server (2026)</strong>
-              <span>Full premium RP build</span>
-            </a>
-            <a class="work-item" href="#" onclick="return false;">
-              <strong>N3X Garage / UI Systems</strong>
-              <span>Custom mechanics & interfaces</span>
-            </a>
-            <a class="work-item" href="#" onclick="return false;">
-              <strong>Custom Jobs & Economy</strong>
-              <span>Legal + illegal systems</span>
-            </a>
+        <div class="skills grid">
+          <div class="card glass reveal">
+            <h3>Core Stack</h3>
+
+            <div class="bar">
+              <div class="bar__top"><span>Lua</span><span>Expert</span></div>
+              <div class="bar__track"><div class="bar__fill" style="width:92%"></div></div>
+            </div>
+            <div class="bar">
+              <div class="bar__top"><span>SQL / MySQL</span><span>Advanced</span></div>
+              <div class="bar__track"><div class="bar__fill" style="width:86%"></div></div>
+            </div>
+            <div class="bar">
+              <div class="bar__top"><span>QBCore / QBOX / ESX</span><span>Advanced</span></div>
+              <div class="bar__track"><div class="bar__fill" style="width:88%"></div></div>
+            </div>
+            <div class="bar">
+              <div class="bar__top"><span>HTML / CSS</span><span>Strong</span></div>
+              <div class="bar__track"><div class="bar__fill" style="width:78%"></div></div>
+            </div>
+
+            <p class="muted">Tip: We can adjust these percentages to match your confidence.</p>
+          </div>
+
+          <div class="card glass reveal">
+            <h3>Highlights</h3>
+            <div class="taggrid">
+              <span class="tag">ox_inventory</span>
+              <span class="tag">Server Optimization</span>
+              <span class="tag">UI Systems</span>
+              <span class="tag">Performance Tuning</span>
+              <span class="tag">Economy Balancing</span>
+              <span class="tag">Custom Jobs</span>
+              <span class="tag">Heists & Illegal Systems</span>
+              <span class="tag">Maintenance & Support</span>
+            </div>
+
+            <div class="callout">
+              ⚡ <strong>Fast Delivery</strong>
+              <span>Clean, organized, and production-ready solutions.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section section--alt">
+      <div class="container">
+        <div class="section__head reveal">
+          <h2>🎓 Education</h2>
+          <p>Simple, clean cards.</p>
+        </div>
+
+        <div class="edu grid">
+          <div class="card glass reveal">
+            <h3>BSc in CSE</h3>
+            <p class="muted">North South University (NSU)</p>
+            <ul class="list">
+              <li>Major focus: Software & Network (planned)</li>
+              <li>Interested in scalable systems and backend optimization</li>
+            </ul>
+          </div>
+
+          <div class="card glass reveal">
+            <h3>Certifications</h3>
+            <p class="muted">Add yours here (optional)</p>
+            <ul class="list">
+              <li>✅ FiveM Frameworks & Server Management (self-driven)</li>
+              <li>✅ Advanced scripting & database integrations</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="section alt">
+    <section id="contact" class="section">
       <div class="container">
-        <h3>Contact</h3>
-        <div class="card contact">
-          <div>
-            <p><strong>Email:</strong> <a href="mailto:taneon98@hotmail.com">taneon98@hotmail.com</a></p>
-            <p><strong>Phone:</strong> +880 1831-957854</p>
-            <p><strong>LinkedIn:</strong> <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/ta-neon">/in/ta-neon</a></p>
-            <p><strong>Website:</strong> <a target="_blank" rel="noreferrer" href="https://dxfivem.com">dxfivem.com</a></p>
+        <div class="section__head reveal">
+          <h2>📬 Contact</h2>
+          <p>Easy ways to reach you + optional form.</p>
+        </div>
+
+        <div class="contact grid">
+          <div class="card glass reveal">
+            <h3>Let’s build something premium</h3>
+            <p class="muted">
+              If you have a FiveM project (server build, scripts, bug fixing, optimization), send details and your deadline.
+            </p>
+
+            <div class="contact__links">
+              <a class="linkbtn" href="mailto:taneon98@hotmail.com">📩 Email</a>
+              <a class="linkbtn" href="https://www.linkedin.com/in/ta-neon" target="_blank" rel="noreferrer">💼 LinkedIn</a>
+              <a class="linkbtn" href="https://dxfivem.com" target="_blank" rel="noreferrer">🌐 Website</a>
+            </div>
+
+            <p class="tiny">
+              Want a working form? Use Formspree (free) and replace the action URL below.
+            </p>
           </div>
 
-          <form class="form" action="https://formspree.io/f/your-form-id" method="POST">
-            <label>
-              Your name
-              <input name="name" placeholder="John Doe" required />
-            </label>
-            <label>
-              Email
-              <input type="email" name="email" placeholder="john@email.com" required />
-            </label>
-            <label>
-              Message
-              <textarea name="message" rows="4" placeholder="Tell me about your project..." required></textarea>
-            </label>
-            <button class="btn" type="submit">Send</button>
-            <p class="tiny">Tip: Replace Formspree URL with your own (free) form endpoint.</p>
-          </form>
+          <div class="card glass reveal">
+            <h3>Message</h3>
+            <form class="form" action="https://formspree.io/f/your-form-id" method="POST">
+              <label>
+                Name
+                <input name="name" placeholder="Your name" required />
+              </label>
+              <label>
+                Email
+                <input type="email" name="email" placeholder="you@email.com" required />
+              </label>
+              <label>
+                Message
+                <textarea name="message" rows="5" placeholder="Tell me what you need..." required></textarea>
+              </label>
+              <button class="btn primary" type="submit">Send</button>
+            </form>
+          </div>
         </div>
+
+        <footer class="footer reveal">
+          <span>© <span id="year"></span> Tanvir Anjum Neon</span>
+          <span class="sep">•</span>
+          <a href="#top">Back to top ↑</a>
+        </footer>
       </div>
     </section>
-
-    <footer class="footer">
-      <div class="container">
-        <span>© <span id="y"></span> Tanvir Anjum Neon</span>
-        <span class="dot">•</span>
-        <a href="#top">Back to top</a>
-      </div>
-    </footer>
   </main>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
