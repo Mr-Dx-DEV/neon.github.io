@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:neon-portfolio--taneon98.replit.app)",
+      "Bash(cd:*)",
+      "WebFetch(domain:www.facebook.com)",
+      "WebSearch",
+      "WebFetch(domain:www.linkedin.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:www.youtube.com)"
+    ]
+  }
+}
