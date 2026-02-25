@@ -71,6 +71,109 @@ document.querySelectorAll(".gtab").forEach(tab => {
   });
 });
 
+// ===== GitHub Repos =====
+(function fetchGitHubRepos() {
+  const grid    = document.getElementById("repoGrid");
+  const loading = document.getElementById("repoLoading");
+  if (!grid) return;
+
+  const LANG_COLORS = {
+    JavaScript: "#f1e05a",
+    TypeScript: "#2b7489",
+    Lua:        "#000080",
+    Python:     "#3572A5",
+    HTML:       "#e34c26",
+    CSS:        "#563d7c",
+    PHP:        "#4F5D95",
+    Shell:      "#89e051",
+    Batchfile:  "#C1F12E",
+    Vue:        "#41b883",
+    C:          "#555555",
+    "C++":      "#f34b7d",
+    Go:         "#00ADD8",
+    Rust:       "#dea584",
+    Java:       "#b07219",
+  };
+
+  const REPO_ICONS = {
+    JavaScript: "🟨", TypeScript: "🔷", Lua: "🌙", Python: "🐍",
+    HTML: "🌐", CSS: "🎨", PHP: "🐘", Shell: "⚙️", Vue: "💚",
+    default: "📦",
+  };
+
+  function buildCard(repo) {
+    const a = document.createElement("a");
+    a.className = "repo-card glass reveal";
+    a.href      = repo.html_url;
+    a.target    = "_blank";
+    a.rel       = "noreferrer";
+
+    const lang      = repo.language || "";
+    const color     = LANG_COLORS[lang] || "#8b5cf6";
+    const icon      = REPO_ICONS[lang]  || REPO_ICONS.default;
+    const desc      = repo.description  || "";
+    const stars     = repo.stargazers_count || 0;
+    const forks     = repo.forks_count     || 0;
+    const isFork    = repo.fork;
+
+    a.innerHTML = `
+      <div class="repo-card__top">
+        <span class="repo-icon">${icon}</span>
+        <span class="repo-name" title="${repo.name}">${repo.name}</span>
+        ${isFork ? '<span class="repo-fork-badge">fork</span>' : ""}
+        <span class="repo-link-icon">↗</span>
+      </div>
+      ${desc
+        ? `<p class="repo-desc">${desc}</p>`
+        : `<p class="repo-desc repo-desc--empty">No description</p>`
+      }
+      <div class="repo-footer">
+        ${lang
+          ? `<span class="repo-lang">
+               <span class="repo-lang-dot" style="background:${color}"></span>
+               ${lang}
+             </span>`
+          : ""
+        }
+        ${stars > 0 ? `<span class="repo-stat">⭐ ${stars}</span>` : ""}
+        ${forks > 0 ? `<span class="repo-stat">⑂ ${forks}</span>` : ""}
+      </div>
+    `;
+    return a;
+  }
+
+  fetch("https://api.github.com/users/Mr-Dx-DEV/repos?sort=updated&per_page=30&type=public")
+    .then(r => {
+      if (!r.ok) throw new Error("GitHub API error: " + r.status);
+      return r.json();
+    })
+    .then(repos => {
+      if (loading) loading.remove();
+
+      if (!repos.length) {
+        grid.innerHTML = `<div class="repo-error">No public repositories found.</div>`;
+        return;
+      }
+
+      const fragment = document.createDocumentFragment();
+      repos.forEach(repo => fragment.appendChild(buildCard(repo)));
+      grid.appendChild(fragment);
+
+      // hook new cards into the reveal observer
+      grid.querySelectorAll(".repo-card.reveal").forEach(el => io.observe(el));
+    })
+    .catch(() => {
+      if (loading) loading.remove();
+      grid.innerHTML = `
+        <div class="repo-error">
+          Could not load repositories.<br>
+          <a href="https://github.com/Mr-Dx-DEV" target="_blank" rel="noreferrer">
+            View on GitHub ↗
+          </a>
+        </div>`;
+    });
+})();
+
 // ===== Neon Particle Canvas =====
 const canvas = document.getElementById("particles");
 const ctx    = canvas.getContext("2d");
