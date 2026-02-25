@@ -8,7 +8,14 @@
       "WebFetch(domain:www.linkedin.com)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:www.youtube.com)",
-      "Bash(where wkhtmltopdf:*)"
+      "Bash(where wkhtmltopdf:*)",
+      "Bash(cd \"E:\\\\neon.github.io\" && node make-pdf.js 2>&1)",
+      "Bash(tail:*)",
+      "Bash(ls:*)",
+      "Bash(cd \"E:\\\\neon.github.io\" && node build-resume.js 2>&1)",
+      "Bash(cd \"E:\\\\neon.github.io\" && npm install puppeteer --save-dev 2>&1 | tail -3 && node make-pdf.js 2>&1)",
+      "Bash(echo cleanup done:*)",
+      "Bash(cd \"E:\\\\neon.github.io\" && npm install puppeteer --save-dev 2>&1 | tail -2 && node build-resume.js && node make-pdf.js 2>&1)"
     ]
   }
 }
