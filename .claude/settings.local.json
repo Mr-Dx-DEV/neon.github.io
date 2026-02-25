@@ -7,7 +7,8 @@
       "WebSearch",
       "WebFetch(domain:www.linkedin.com)",
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:www.youtube.com)"
+      "WebFetch(domain:www.youtube.com)",
+      "Bash(where wkhtmltopdf:*)"
     ]
   }
 }
